@@ -1,0 +1,18 @@
+{
+  "default": {
+    "cachedFile": "../build/assets_cache.json",
+    "localDirectory": "../public",
+    "remoteDirectory": "test/default/public",
+    "bucket": "baie-web-node-cdn",
+    "adapter": "qiniu"
+  },
+  "beta": {
+    "remoteDirectory": "test/beta/public"
+  },
+  "release": {
+    "remoteDirectory": "test/release/public"
+  },
+  "production": {
+    "remoteDirectory": "test/production/public"
+  }
+}
