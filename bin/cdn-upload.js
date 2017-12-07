@@ -1,5 +1,5 @@
 const program = require('commander');
-const cdnUpload = require("../index");
+const cdnUpload = require("../main");
 const { validateArgs, validateConfig, upload } = cdnUpload;
 
 program
