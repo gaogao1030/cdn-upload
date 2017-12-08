@@ -1,6 +1,8 @@
 ## Installation
 
+```
   $ npm install -g cdn-upload
+```
 
 ## Configuration
 
