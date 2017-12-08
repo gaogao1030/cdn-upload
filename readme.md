@@ -34,6 +34,8 @@ QINIU_ACCESS_KEY="qiniu access key"
 QINIU_SECRET_KEY="qiniu secret key"
 
 ```
+You should ignore .env file, add .env in .gitignore.
+
 ## Usage
 
 ```
