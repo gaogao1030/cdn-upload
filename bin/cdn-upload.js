@@ -1,6 +1,6 @@
 const program = require('commander');
-const cdnUpload = require("../main");
-const { validateArgs, validateConfig, upload } = cdnUpload;
+const lib = require("../lib");
+const { validateArgs, validateConfig, upload } = lib;
 
 program
   .version('0.1.0')
@@ -25,12 +25,10 @@ program
     upload(config);
   })
 
-
 if(process.argv.slice(2).length == 0){
   console.log('No enviroment given');
   program.outputHelp();
   process.exit(1);
 }
-
 
 program.parse(process.argv);

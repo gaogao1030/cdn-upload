@@ -9,6 +9,7 @@
   "bin": {
     "cdn-upload": "bin/cdn-upload.js"
   },
+  "preferGlobal": "true",
   "keywords": [
     "cdn",
     "upload"

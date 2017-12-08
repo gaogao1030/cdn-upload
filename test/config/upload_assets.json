@@ -4,7 +4,7 @@
     "localDirectory": "../public",
     "remoteDirectory": "test/default/public",
     "bucket": "baie-web-node-cdn",
-    "adapter": "qiniu"
+    "cdn": "qiniu"
   },
   "beta": {
     "remoteDirectory": "test/beta/public"
