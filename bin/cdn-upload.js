@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');
 const lib = require("../lib");
 const { validateArgs, validateConfig, upload } = lib;
