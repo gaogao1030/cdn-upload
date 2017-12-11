@@ -9,21 +9,23 @@
 config/upload_assets.json:
 
 ```js
-"default": {
-  "cachedFile": "../build/assets_cache.json",
-  "localDirectory": "../public",
-  "remoteDirectory": "test/beta/public",
-  "bucket": "your cdn bucket",
-  "cdn": "qiniu" //currently only supports qiniu
-},
-"beta": {
-  "remoteDirectory": "test/beta/public"
-},
-"release": {
-  "remoteDirectory": "test/release/public"
-},
-"production": {
-  "remoteDirectory": "test/production/public"
+{
+  "default": {
+    "cachedFile": "../build/assets_cache.json",
+    "localDirectory": "../public",
+    "remoteDirectory": "test/beta/public",
+    "bucket": "your cdn bucket",
+    "cdn": "qiniu" 
+  },
+  "beta": {
+    "remoteDirectory": "test/beta/public"
+  },
+  "release": {
+    "remoteDirectory": "test/release/public"
+  },
+  "production": {
+    "remoteDirectory": "test/production/public"
+  }
 }
 ```
 
