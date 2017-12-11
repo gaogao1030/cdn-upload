@@ -24,7 +24,7 @@ program
     let config;
     config = validateArgs(configPath, env);
     config = validateConfig(config, env, config.path);
-    //upload(config);
+    upload(config);
   })
 
 if(process.argv.slice(2).length == 0){
