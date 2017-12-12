@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
+const package = require("../package.json");
 const program = require('commander');
 const lib = require("../lib");
 const { validateArgs, validateConfig, upload } = lib;
 
 program
-  .version('0.1.0')
+  .version(package.version);
 
 program
   .usage('cdn-upload <config path> [env]')
