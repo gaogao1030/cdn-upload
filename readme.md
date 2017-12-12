@@ -76,7 +76,7 @@ You should add .env and assets_cache.json files in .gitignore.
 ## Usage
 
 ```
-  Usage: cdn-upload cdn-upload <config path> [env]
+  Usage: cdn-upload <config path> [env]
 
   Upload assets to cdn. set config, defaults to config/cdn_upload.json
 

@@ -1,6 +1,6 @@
 {
   "name": "cdn-upload",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -24,5 +24,9 @@
     "lodash": "^4.17.4",
     "mime": "^2.0.3",
     "qiniu": "^7.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaogao1030/cdn-upload"
   }
 }
