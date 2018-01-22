@@ -50,7 +50,8 @@ config/upload_assets.json:
     "localDirectory": "../public",
     "remoteDirectory": "test/beta/public",
     "bucket": "your cdn bucket",
-    "cdn": "qiniu" 
+    "cdn": "qiniu",
+    "envFile": ".env"
   },
   "beta": {
     "remoteDirectory": "test/beta/public"
