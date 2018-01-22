@@ -4,8 +4,7 @@
     "localDirectory": "../public",
     "remoteDirectory": "public/assets",
     "bucket": "baie-web-node-cdn",
-    "cdn": "qiniu",
-    "envFile": ".env.webapp"
+    "cdn": "qiniu"
   },
   "beta": {
     "remoteDirectory": "test/beta/public/assets"

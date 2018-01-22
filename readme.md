@@ -63,6 +63,7 @@ config/upload_assets.json:
     "remoteDirectory": "test/production/public"
   }
 }
+// envFile(optional) default .env
 ```
 
 .env:
