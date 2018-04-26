@@ -4,7 +4,7 @@ Synchronize your local directory to cdn.
 
 
 ```
-  //local directory has following files:
+  // local directory has following files:
   js/a.js
   js/b.js
   main.css
@@ -16,21 +16,20 @@ Synchronize your local directory to cdn.
   <remoteDirctory>/main.css
   <remoteDirctory>/logo.svg
   
-  //remove main.css then excute upload command
-  //cdn will be has following files
+  // remove main.css then excute upload command
+  // cdn will be has following files
   <remoteDirctory>/js/a.js
   <remoteDirctory>/js/b.js
   <remoteDirctory>/logo.svg
   
-  //create css/base.css and css/page.css
-  //then execute upload command
-  //cdn will be has following files
+  // create css/base.css and css/page.css
+  // then execute upload command
+  // cdn will be has following files
   <remoteDirctory>/js/a.js
   <remoteDirctory>/js/b.js
   <remoteDirctory>/css/base.css
   <remoteDirctory>/css/base.css
   <remoteDirctory>/logo.svg
-
 ```
 
 ## Installation
@@ -51,7 +50,8 @@ config/upload_assets.json:
     "remoteDirectory": "test/beta/public",
     "bucket": "your cdn bucket",
     "cdn": "qiniu",
-    "envFile": ".env"
+    "envFile": ".env",
+    "ignore": ['a.html', 'b/**/**'] // glob ignore sytax that a.html is localdirectory/a.html and b/**/** will localdirectory/b/**/**;
   },
   "beta": {
     "remoteDirectory": "test/beta/public"
