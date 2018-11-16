@@ -1,36 +1,6 @@
 # cdn-upload
 
-Synchronize your local directory to cdn.
-
-
-```
-  // local directory has following files:
-  js/a.js
-  js/b.js
-  main.css
-  logo.svg
-  
-  // execute upload command and cdn will be has following files
-  <remoteDirctory>/js/a.js
-  <remoteDirctory>/js/b.js
-  <remoteDirctory>/main.css
-  <remoteDirctory>/logo.svg
-  
-  // remove main.css then excute upload command
-  // cdn will be has following files
-  <remoteDirctory>/js/a.js
-  <remoteDirctory>/js/b.js
-  <remoteDirctory>/logo.svg
-  
-  // create css/base.css and css/page.css
-  // then execute upload command
-  // cdn will be has following files
-  <remoteDirctory>/js/a.js
-  <remoteDirctory>/js/b.js
-  <remoteDirctory>/css/base.css
-  <remoteDirctory>/css/base.css
-  <remoteDirctory>/logo.svg
-```
+Synchronize all files in your specified local directory to the CDN
 
 ## Installation
 
