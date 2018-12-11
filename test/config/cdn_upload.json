@@ -5,7 +5,7 @@
     "remoteDirectory": "public/assets",
     "bucket": "baie-web-node-cdn",
     "cdn": "qiniu",
-    "envFile": ".env.webapp",
+    "envFile": ".env",
     "ignore": ["a/**/**","c/c.html"]
   },
   "beta": {
