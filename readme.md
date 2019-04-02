@@ -1,6 +1,6 @@
 # cdn-upload
 
-Synchronize all files in your specified local directory to the CDN
+Synchronize all files in your specified local directory to the CDN (currently only supports qiniu)
 
 ## Installation
 
@@ -13,13 +13,14 @@ Synchronize all files in your specified local directory to the CDN
 ```
   Usage: cdn-upload <config path> [env]
 
-  Upload assets to cdn. set config, defaults to config/cdn_upload.json
+  Upload file to cdn. the default configuration path for the configuration file is config/cdn_upload.json
 
 
   Options:
 
     -V, --version  output the version number
     -h, --help     output usage information
+
   Examples:
 
     $ cdn-upload config/cdn_upload.json beta
@@ -39,16 +40,20 @@ config/upload_assets.json:
     "bucket": "your cdn bucket",
     "cdn": "qiniu",
     "envFile": ".env",
-    "ignore": ['a.html', 'b/**/**'] // glob ignore sytax that a.html is localdirectory/a.html and b/**/** will localdirectory/b/**/**;
+    "ignore": ['a.html', 'b/**/**'], // glob ignore sytax that a.html is localdirectory/a.html and b/**/** will localdirectory/b/**/**
+    "concurrency": 8 // Number of concurrent processes (default: cpu count)
   },
   "beta": {
-    "remoteDirectory": "test/beta/public"
+    "remoteDirectory": "test/beta/public",
+    "concurrency": 4
   },
   "release": {
-    "remoteDirectory": "test/release/public"
+    "remoteDirectory": "test/release/public",
+    "concurrency": 8
   },
   "production": {
-    "remoteDirectory": "test/production/public"
+    "remoteDirectory": "test/production/public",
+    "concurrency": 16
   }
 }
 ```

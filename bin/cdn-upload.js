@@ -13,13 +13,14 @@ program
 
 program
   .on('--help', () => {
+    console.log('')
     console.log('  Examples:')
-    console.log('  ')
+    console.log('')
     console.log('    $ cdn-upload config/cdn_upload.json beta')
   })
 
 program
-  .description("Upload assets to cdn. set config, defaults to config/cdn_upload.json")
+  .description("Upload files to cdn.")
   .arguments('<configPath> [env]')
   .action((configPath, env) => {
     const { configPath: _configPath, env: _env } = validateArgs(configPath, env)

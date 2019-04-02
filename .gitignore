@@ -3,3 +3,6 @@ node_modules/
 .swp
 .env.*
 test/.env
+test/public.old
+test/public
+test/assets_cache.json
