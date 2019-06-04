@@ -1,16 +1,20 @@
 {
   "default": {
     "cachedFile": "../assets_cache.json",
-    "localDirectory": "../public",
-    "remoteDirectory": "public/assets",
+    "localDirectory": "../upload.test/public",
+    "remoteDirectory": "test/public/assets",
     "bucket": "baie-web-node-cdn",
     "cdn": "qiniu",
     "envFile": ".env",
     "ignore": ["a/**/**","c/c.html"],
     "concurrency": 4
   },
+  "test": {
+    "localDirectory": "../upload.test/public",
+    "cachedFile": "../upload.test/assets_cache.json"
+  },
   "beta": {
-    "remoteDirectory": "test/beta1/public/assets"
+    "remoteDirectory": "test/beta/public/assets"
   },
   "release": {
     "remoteDirectory": "test/release/public/assets"
