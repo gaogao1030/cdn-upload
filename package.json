@@ -1,10 +1,10 @@
 {
   "name": "cdn-upload",
-  "version": "1.3.1",
-  "description": "",
+  "version": "1.5.0",
+  "description": "Upload files to CDN CLI Tool",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "export NODE_ENV=test && tap test/*.test.js"
   },
   "bin": {
     "cdn-upload": "bin/cdn-upload.js"

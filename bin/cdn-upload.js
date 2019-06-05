@@ -20,7 +20,7 @@ program
   })
 
 program
-  .description("Upload files to cdn.")
+  .description("Upload files to cdn. set config, defaults to config/cdn_upload.json")
   .arguments('<configPath> [env]')
   .action((configPath, env) => {
     const { configPath: _configPath, env: _env } = validateArgs(configPath, env)
