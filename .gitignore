@@ -3,6 +3,7 @@ node_modules/
 .swp
 .env.*
 test/.env
-test/upload.test/
+test/upload.test/public/hello.*
 test/.cache.test.json
-
+test/upload.test/assets_cache.json
+.nyc_output

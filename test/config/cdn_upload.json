@@ -7,11 +7,13 @@
     "cdn": "qiniu",
     "envFile": ".env",
     "ignore": ["a/**/**","c/c.html"],
+    "localDirectory": "../upload.test/public",
+    "cachedFile": "../upload.test/assets_cache.json",
     "concurrency": 4
   },
-  "test": {
-    "localDirectory": "../upload.test/public",
-    "cachedFile": "../upload.test/assets_cache.json"
+  "test1": {},
+  "test2": {
+    "cleanPrevCdnFiles": false
   },
   "beta": {
     "remoteDirectory": "test/beta/public/assets"

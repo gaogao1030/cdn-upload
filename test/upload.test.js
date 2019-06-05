@@ -3,7 +3,6 @@ const path = require('path')
 const _ = require('lodash')
 const { upload, validateConfig, readConf } = lib
 const confPath = path.join(__dirname, 'config/cdn_upload.json')
-const config = validateConfig(readConf(confPath), 'test', confPath)
 const glob = require("glob")
 process.env.NODE_ENV = 'test'
 
@@ -18,7 +17,7 @@ const toUploadFiles = (files) => {
   })
 }
 
-const toRemoteFiles = (files) => {
+const toRemoteFiles = (files, config) => {
   return files.map((file) => {
     return `${config.remoteDirectory}/${file}`
   })
@@ -42,7 +41,7 @@ const delFiles = (files) => {
   })
 }
 
-const resetUpload = async () => {
+const resetUpload = async (config) => {
   const files = glob.sync(`${config.localDirectory}/**/**/*`)
   delFiles(files)
   await upload(config)
@@ -53,12 +52,13 @@ const toStr = JSON.stringify
 
 test('Upload Files Test', async (t) => {
   var res
+  const config = validateConfig(readConf(confPath), 'test1', confPath)
   const testAddFiles = ['hello.coffee']
   const testDelFiles = ['hello.js', 'hello.go']
   const readyDelFiles = toUploadFiles(testDelFiles)
   const readyAddFiles = toUploadFiles(testAddFiles)
 
-  await resetUpload()
+  await resetUpload(config)
   res = await upload(config)
   t.strictEqual(toStr(res.removeFiles), '[]')
   t.strictEqual(toStr(res.uploadedFiles), '[]')
@@ -66,7 +66,7 @@ test('Upload Files Test', async (t) => {
   genFiles(uploadFiles)
   res = await upload(config)
   t.strictEqual(toStr(res.removeFiles), '[]')
-  t.strictEqual(toStr(res.uploadedFiles.sort()), toStr(toRemoteFiles(testFiles.sort())))
+  t.strictEqual(toStr(res.uploadedFiles.sort()), toStr(toRemoteFiles(testFiles.sort(), config)))
 
   delFiles(readyDelFiles)
   genFiles(readyAddFiles)
@@ -74,6 +74,34 @@ test('Upload Files Test', async (t) => {
   res = await upload(config)
   const currentUploadFiles = res.uploadedFiles.sort()
   const addedFiles = _.difference(currentUploadFiles, previousUploadFiles)
-  t.strictEqual(toStr(res.removeFiles), toStr(toRemoteFiles(testDelFiles.sort())))
-  t.strictEqual(toStr(addedFiles.sort()), toStr(toRemoteFiles(testAddFiles.sort())))
+  t.strictEqual(toStr(res.removeFiles), toStr(toRemoteFiles(testDelFiles.sort(), config)))
+  t.strictEqual(toStr(addedFiles.sort()), toStr(toRemoteFiles(testAddFiles.sort(), config)))
+})
+
+test('Upload Files Test with Disable cleanPrevCdnFiles', async (t) => {
+  const config = validateConfig(readConf(confPath), 'test2', confPath)
+  var res
+  const testAddFiles = ['hello.coffee']
+  const testDelFiles = ['hello.js', 'hello.go']
+  const readyDelFiles = toUploadFiles(testDelFiles)
+  const readyAddFiles = toUploadFiles(testAddFiles)
+
+  await resetUpload(config)
+  res = await upload(config)
+  t.strictEqual(toStr(res.removeFiles), '[]')
+  t.strictEqual(toStr(res.uploadedFiles), '[]')
+
+  genFiles(uploadFiles)
+  res = await upload(config)
+  t.strictEqual(toStr(res.removeFiles), '[]')
+  t.strictEqual(toStr(res.uploadedFiles.sort()), toStr(toRemoteFiles(testFiles.sort(), config)))
+
+  delFiles(readyDelFiles)
+  genFiles(readyAddFiles)
+  const previousUploadFiles = res.uploadedFiles.sort()
+  res = await upload(config)
+  const currentUploadFiles = res.uploadedFiles.sort()
+  const addedFiles = _.difference(currentUploadFiles, previousUploadFiles)
+  t.strictEqual(toStr(res.removeFiles), '[]')
+  t.strictEqual(toStr(addedFiles.sort()), toStr(toRemoteFiles(testAddFiles.sort(), config)))
 })
