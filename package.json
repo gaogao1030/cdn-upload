@@ -1,6 +1,6 @@
 {
   "name": "cdn-upload",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Upload files to CDN CLI Tool",
   "main": "lib/index.js",
   "scripts": {
