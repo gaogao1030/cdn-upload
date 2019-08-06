@@ -19,6 +19,7 @@ Synchronize all files in your specified local directory to the CDN (currently on
   Options:
 
     -V, --version  output the version number
+    -s, --sync     Make sure the local uploaded files is the same as the cdn files
     -h, --help     output usage information
 
   Examples:
@@ -48,12 +49,10 @@ config/upload_assets.json:
     "envFile": ".env",
     "ignore": ['a.html', 'b/**/**'], // glob ignore sytax that a.html is localdirectory/a.html and b/**/** will localdirectory/b/**/**
     "concurrency": 8 // Number of concurrent processes (default: cpu count)
-    "cleanPrevCdnFiles": true // Remove previous cdn files after uploaded (Recommended Use this feature. default: true)
   },
   "beta": {
     "remoteDirectory": "test/beta/public",
     "concurrency": 4
-    "cleanPrevCdnFiles": false
   },
   "release": {
     "remoteDirectory": "test/release/public",

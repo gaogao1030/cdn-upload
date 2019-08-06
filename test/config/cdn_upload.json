@@ -11,10 +11,6 @@
     "cachedFile": "../upload.test/assets_cache.json",
     "concurrency": 4
   },
-  "test1": {},
-  "test2": {
-    "cleanPrevCdnFiles": false
-  },
   "beta": {
     "remoteDirectory": "test/beta/public/assets"
   },

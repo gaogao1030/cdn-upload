@@ -42,64 +42,67 @@ const delFiles = (files) => {
 }
 
 const resetUpload = async (config) => {
+  const sync = true
   const files = glob.sync(`${config.localDirectory}/**/**/*`)
   delFiles(files)
-  await upload(config)
+  await upload(config, sync)
 }
 
 
 const toStr = JSON.stringify
 
-test('Upload Files Test', async (t) => {
+test('Upload Files Test with Sync', async (t) => {
   var res
-  const config = validateConfig(readConf(confPath), 'test1', confPath)
+  const sync = true
+  const config = validateConfig(readConf(confPath), 'beta', confPath)
   const testAddFiles = ['hello.coffee']
   const testDelFiles = ['hello.js', 'hello.go']
   const readyDelFiles = toUploadFiles(testDelFiles)
   const readyAddFiles = toUploadFiles(testAddFiles)
 
   await resetUpload(config)
-  res = await upload(config)
+  res = await upload(config, sync)
   t.strictEqual(toStr(res.removeFiles), '[]')
   t.strictEqual(toStr(res.uploadedFiles), '[]')
 
   genFiles(uploadFiles)
-  res = await upload(config)
+  res = await upload(config, sync)
   t.strictEqual(toStr(res.removeFiles), '[]')
   t.strictEqual(toStr(res.uploadedFiles.sort()), toStr(toRemoteFiles(testFiles.sort(), config)))
 
   delFiles(readyDelFiles)
   genFiles(readyAddFiles)
   const previousUploadFiles = res.uploadedFiles.sort()
-  res = await upload(config)
+  res = await upload(config, sync)
   const currentUploadFiles = res.uploadedFiles.sort()
   const addedFiles = _.difference(currentUploadFiles, previousUploadFiles)
   t.strictEqual(toStr(res.removeFiles), toStr(toRemoteFiles(testDelFiles.sort(), config)))
   t.strictEqual(toStr(addedFiles.sort()), toStr(toRemoteFiles(testAddFiles.sort(), config)))
 })
 
-test('Upload Files Test with Disable cleanPrevCdnFiles', async (t) => {
-  const config = validateConfig(readConf(confPath), 'test2', confPath)
+test('Upload Files Test without Sync', async (t) => {
+  const config = validateConfig(readConf(confPath), 'beta', confPath)
   var res
+  const sync = false
   const testAddFiles = ['hello.coffee']
   const testDelFiles = ['hello.js', 'hello.go']
   const readyDelFiles = toUploadFiles(testDelFiles)
   const readyAddFiles = toUploadFiles(testAddFiles)
 
   await resetUpload(config)
-  res = await upload(config)
+  res = await upload(config, sync)
   t.strictEqual(toStr(res.removeFiles), '[]')
   t.strictEqual(toStr(res.uploadedFiles), '[]')
 
   genFiles(uploadFiles)
-  res = await upload(config)
+  res = await upload(config, sync)
   t.strictEqual(toStr(res.removeFiles), '[]')
   t.strictEqual(toStr(res.uploadedFiles.sort()), toStr(toRemoteFiles(testFiles.sort(), config)))
 
   delFiles(readyDelFiles)
   genFiles(readyAddFiles)
   const previousUploadFiles = res.uploadedFiles.sort()
-  res = await upload(config)
+  res = await upload(config, sync)
   const currentUploadFiles = res.uploadedFiles.sort()
   const addedFiles = _.difference(currentUploadFiles, previousUploadFiles)
   t.strictEqual(toStr(res.removeFiles), '[]')
