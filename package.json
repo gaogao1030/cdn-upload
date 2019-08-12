@@ -1,6 +1,6 @@
 {
   "name": "cdn-upload",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Upload files to CDN CLI Tool",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "debug": "^3.1.0",
     "dotenv": "^4.0.0",
     "glob": "^7.1.2",
-    "lodash": ">=4.17.11",
+    "lodash": ">=4.17.13",
     "mime": ">=1.4.1",
     "qiniu": "^7.1.1"
   },
